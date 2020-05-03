@@ -1,0 +1,38 @@
+/* static/main.css */
+
+.form-item{
+    margin:10px;
+    width:200px;
+    display: grid;
+    }
+
+body{
+    background-color:blanchedalmond;
+}
+
+.titulo{
+    font-size: 25px;
+}
+
+.item{
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+}
+
+
+.container{
+    display: grid;
+    grid-auto-flow: column;
+    vertical-align: middle;
+}
+
+#saude{
+    text-align: end;
+}
+
+
+.hide{
+    display: none;
+}
+
