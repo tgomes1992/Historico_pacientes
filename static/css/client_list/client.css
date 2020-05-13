@@ -1,0 +1,19 @@
+.clientes{
+    /* text-align: center; */
+    display: grid;
+    
+
+}
+
+.remover .modificar .visita{
+    text-align: justify;
+}
+
+
+form{
+    display: flex;
+}
+
+.cliente{
+    grid-column: 1 / span 2;
+}
