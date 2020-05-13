@@ -7,8 +7,13 @@
     </head>
     <body>
         <h1 class="titulo center">Cadastro de dados - Anamnese</h1>
+    <div>
+        <ul>
+            <li><button class="clientes_cadastrados">Clientes Cadastrados</button></li>
+        </ul>
+    </div>
     <div class="container">
-        <form id="clientes">
+           <form id="pacientes">
             <div class=form-item>
                 <label class="item">Nome</label>
                 <input type="text" id="nome"></input>
@@ -38,50 +43,15 @@
                 <input type="text" id="bairro"></input>
             </div>
             <button class="submeter">Próximo</button>
-        </form>
-        <form class="hide" id="saude">
-            <p class=form-item>
-                <input type="checkbox" id="gravidez">
-                <label for="gravidez" class="item">Gravidez</label>
-            </p>
-            <p class=form-item>
-                <input type="checkbox" id="diabetes">
-                <label for="diabetes" class="item">Diabetes</label>
-            </p>
-            <p class=form-item>
-                <input type="checkbox" id="cardiopatia">
-                <label for="cardiopatia" class="item">Cardiopatias</label>
-            </p>
-            <p class=form-item>
-                <input type="checkbox" id="tabagismo">
-                <label for="tabagismo" class="item">Tabagismo</label>
-            </p>
-            <p class=form-item>
-                <input type="checkbox" id="medicamento">
-                <label for="medicamento" class="item">Tabagismo</label>
-            
-            </p>
-            <p class=form-item>
-                <input type="checkbox" id="pressao">
-                <label for="pressao" class="item">Alteração Pressão</label>
-            </p>
-            <p class=form-item>
-                <input type="checkbox" id="alergia">
-                <label for="alergia" class="item">Alergia</label>
-                <label class="item">Qual?</label>
-                <input type="text"></input>
-            </p>
-            <p class=form-item>
-                <input type="checkbox" id="alongamento">
-                <label for="alergia" class="item">Já fez uso de Algum Alongamento</label>
-            </p>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
-                <i class="material-icons right">send</i>
-            </button>
-       </form>
+           </form>
 
     </div>
+
+
+
+
     </body>
     <script src="../static/js/script.js"></script>
+    <script src="../static/js/form.js"></script>
 </html>
 

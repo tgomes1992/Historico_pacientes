@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link  type= "text/css" rel="stylesheet" href="../static/css/style.css">
+    <link  type= "text/css" rel="stylesheet" href="../static/css/client_list/client.css">
+    <link  type= "text/css" rel="stylesheet" href="../static/css/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <h1 class="titulo center">Gerenciamento de Clientes</h1>
+        <ul class="menu">
+            <li><button class="addClientes">Adicionar Clientes</button></li>
+        </ul>
+    <div class="container">
+        <h2 class="sub-titulo">Clientes Cadastrados</h2>
+        <ul class="clientes">
+        {% for cliente in clientes %}
+        <li class='cliente' data-id={{cliente.id}}>{{cliente.nome_completo}}<button class="remover">Remover</button>
+            <button class="modificar">Modificar</button><button class="visita">Visita</button></li>
+        {% endfor %}    
+        </ul>
+    </div>
+    <form id="pacientes" data-id="">
+        <div class=form-item>
+            <label class="item">Nome</label>
+            <input type="text" id="nome" value=""></input>
+        </div>
+        <div class=form-item>
+            <label class="item">Data de Nascimento</label>
+            <input type="date" id="nascimento" value=""></input>
+        </div>
+        <div class=form-item>
+            <label class="item">Telefone</label>
+            <input type="text" id="telefone"></input>
+        </div>
+        <div class=form-item>
+            <label class="item">E-mail</label>
+            <input type="text" id="mail"></input>
+        </div>
+        <div class=form-item>
+            <label class="item">Endereço</label>
+            <input type="text" id="endereco"></input>
+        </div>
+        <div class=form-item>
+            <label class="item">Bairro</label>
+            <input type="text" id="bairro"></input>
+        </div>
+    </form>
+     <button class="concluir-modificacao">Concluir Modificação</button>
+
+    </body>
+    <script src="../static/js/client_list/client.js"></script>
+    <script src="../static/js/jquery-3.5.1.js"></script>
+</html>
+
