@@ -1,8 +1,11 @@
 let remover = document.querySelectorAll('.remover');
 let modificar = document.querySelectorAll('.modificar');
 let form = document.querySelector('form');
-let concluir = document.querySelector('.concluir-modificacao')
+let concluir = document.querySelector('.concluir-modificacao');
 const objeto = formobject();
+let visita =  document.querySelectorAll('.visita');
+
+
 
 window.onload=()=>{
     adicionar_eventos();
@@ -25,30 +28,23 @@ function adicionar_eventos(){
     for(i=0 ;i < remover.length; i++ ){
         botao = remover[i]
         botao.addEventListener("click",(e)=>{
-            nome = e.target.parentNode.firstChild.data;
-            console.log(nome);
-            fetch('/excluir/paciente',{
-                method:'POST',
-                body:JSON.stringify({
-                    'nome':nome
-                }),
-                headers:{
-                    'Content-type':'application/json'
-                }
-            })
-            .then(()=>{
-                let excluir = e.target.parentNode;
-                excluir.remove();
-            });
-        });
+            idcliente = {
+            'id' : e.target.parentNode.parentNode.dataset.id,
+            }
+            console.log(idcliente)
+             $.post('/excluir/paciente',idcliente,()=>{
+             let excluir = e.target.parentNode.parentNode;
+             excluir.remove()
+             })
+          });
     }
     for(i=0 ;i < modificar.length; i++ ){
         botaom = modificar[i];
         botaom.addEventListener("click",(e)=>{
-            var id = e.target.parentNode.dataset['id'];
+            var id = e.target.parentNode.parentNode.dataset;
             console.log(id)
             $.get('/verificar/paciente/' + id,function(data){
-                var dado = formatardata(data.nascimento); 
+                var dado = formatardata(data.nascimento);
                 form.setAttribute('data-id',id);
                 console.log(dado);
                 form[0].value = data.nome_completo;
@@ -60,8 +56,6 @@ function adicionar_eventos(){
             })
         })
     }
-
-
     concluir.addEventListener('click',()=>{
         dados ={
             'id':form.dataset.id,
@@ -77,10 +71,16 @@ function adicionar_eventos(){
             form.reset();
         })
     })
-
     addClientes.addEventListener('click',()=>{
         window.location.href = "main";
     });
+    for(i=0;i<visita.length;i++){
+        bvisita = visita[i]
+        bvisita.addEventListener('click',(e)=>{
+            id = e.target.parentNode.parentNode.dataset.id
+            window.location.href = "/visita/"+id
+        })
+    }
 }
 
 function formatardata(data){

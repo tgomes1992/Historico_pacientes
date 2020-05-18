@@ -1,10 +1,11 @@
-/* static/main.css */
-
 
 button{
     margin: 0;
 }
 
+.descricao-cliente{
+    font-size: 20px;
+}
 
 .form-item{
     margin:10px;

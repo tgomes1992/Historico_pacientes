@@ -1,8 +1,11 @@
 .clientes{
     /* text-align: center; */
     display: grid;
-    
 
+}
+
+.botoes{
+    text-align: end;
 }
 
 .remover .modificar .visita{
@@ -17,3 +20,4 @@ form{
 .cliente{
     grid-column: 1 / span 2;
 }
+
