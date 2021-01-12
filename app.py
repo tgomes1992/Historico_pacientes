@@ -16,7 +16,7 @@ migrate = Migrate(app, db)
 
 class Cliente(db.Model):
     id = db.Column(db.Integer(),primary_key=True)
-    nome_completo =  db.Column(db.String(),nullable=False)
+    nome =  db.Column(db.String(),nullable=False)
     data_nascimento = db.Column(db.Date())
     email = db.Column(db.String())
     telefone = db.Column(db.String())
@@ -25,7 +25,7 @@ class Cliente(db.Model):
     saude = db.relationship("Saude",backref='dados_saude')
     visitas = db.relationship("Visitas",backref='visitas')
     def __repr__(self):
-         return f'<Person ID: {self.id}, nome: {self.nome_completo}>'
+         return f'<Person ID: {self.id}, nome: {self.nome}>'
 
 class Saude(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -67,6 +67,7 @@ def index():
 
 @app.route('/client_list')
 def client_list():
+    client = Cliente.query.all()
     return render_template("client_list.html",clientes=Cliente.query.all())
 
 @app.route('/main')
@@ -77,21 +78,22 @@ def index2():
 def checar_paciente(cliente_id):
     modificado = Cliente.query.get(cliente_id)
     resposta = {
-        'id':modificado.id,
-        'nome_completo':modificado.nome_completo,
+        'id':modificado.id, 
+        'nome_completo':modificado.nome,
         'nascimento':modificado.data_nascimento,
         'email': modificado.email,
         'telefone'  : modificado.telefone,
         'endereco':modificado.endereco,
         'bairro':modificado.bairro,
     }
+    print(resposta)
     return resposta
 
 @app.route('/cadastrar/paciente',methods=['POST'])
 def cadastrar_pacientes():
     try:
         npaciente = request.get_json()
-        paciente = Cliente(nome_completo=npaciente['nome'],data_nascimento=npaciente['nascimento'],email=npaciente['email'],telefone=npaciente['telefone'],endereco=npaciente['endereco'],bairro=npaciente['bairro'])
+        paciente = Cliente(nome=npaciente['nome'],data_nascimento=npaciente['nascimento'],email=npaciente['email'],telefone=npaciente['telefone'],endereco=npaciente['endereco'],bairro=npaciente['bairro'])
         db.session.add(paciente)
         db.session.commit()
     except:
@@ -123,7 +125,7 @@ def modificar_paciente():
     cliente.telefone = request.values['telefone']
     cliente.endereco = request.values['endereco']
     cliente.bairro = request.values['bairro']
-    cliente.nome_completo = request.values['nome']
+    cliente.nome = request.values['nome']
     db.session.commit()
     db.session.close()
     return redirect(url_for('index2'))

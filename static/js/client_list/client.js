@@ -5,7 +5,7 @@ let concluir = document.querySelector('.concluir-modificacao');
 const objeto = formobject();
 let visita =  document.querySelectorAll('.visita');
 
-
+console.log(modificar)
 
 window.onload=()=>{
     adicionar_eventos();
@@ -41,8 +41,8 @@ function adicionar_eventos(){
     for(i=0 ;i < modificar.length; i++ ){
         botaom = modificar[i];
         botaom.addEventListener("click",(e)=>{
-            var id = e.target.parentNode.parentNode.dataset;
-            console.log(id)
+            var id = e.target.parentNode.parentNode.dataset.id;
+            console.log(id[0])            
             $.get('/verificar/paciente/' + id,function(data){
                 var dado = formatardata(data.nascimento);
                 form.setAttribute('data-id',id);
@@ -50,7 +50,7 @@ function adicionar_eventos(){
                 form[0].value = data.nome_completo;
                 form[1].value = dado;
                 form[2].value = data.telefone;
-                form[3].value = data.email;
+                form[3].value = data.email; 
                 form[4].value = data.endereco;
                 form[5].value = data.bairro;
             })

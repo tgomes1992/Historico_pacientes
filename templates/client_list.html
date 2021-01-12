@@ -19,20 +19,7 @@
             </div>
         </nav>
 
-    <div class="container">
-        <h2 class="sub-titulo">Clientes Cadastrados</h2>
-        <ul class="clientes">
-        {% for cliente in clientes %}
-        <li class='cliente' data-id={{cliente.id}}>{{cliente.nome_completo}}
-            <div class="botoes">
-            <button class="remover">Remover</button>
-            <button class="modificar">Modificar</button>
-            <button class="visita">Visita</button>
-            </div>
-        </li>
-        {% endfor %}
-        </ul>
-    </div>
+
 
     <form id="pacientes" data-id="">
         <div class=form-item>
@@ -62,6 +49,22 @@
     </form>
 
      <button class="concluir-modificacao">Concluir Modificação</button>
+
+     <div class="container">
+        <h2 class="sub-titulo">Clientes Cadastrados</h2>
+        <ul class="clientes">
+        {% for cliente in clientes %}
+        <li class='cliente' data-id={{cliente.id}}>{{cliente.nome}}
+            <div class="botoes">
+            <button class="remover">Remover</button>
+            <button class="modificar">Modificar</button>
+            <button class="visita">Visita</button>
+            </div>
+        </li>
+        {% endfor %}
+        </ul>
+    </div>
+
     </body>
     <script src="../static/js/client_list/client.js"></script>
     <script src="../static/js/jquery-3.5.1.js"></script>
