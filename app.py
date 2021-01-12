@@ -4,6 +4,9 @@ from flask_migrate import Migrate
 import sys
 from datetime import date , timedelta
 
+
+#app configuration
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:tAman1993**@localhost:5432/podologia'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -12,7 +15,7 @@ db = SQLAlchemy(app)
 
 migrate = Migrate(app, db)
 
-#classes modelos
+#class definitions objects definition
 
 class Cliente(db.Model):
     id = db.Column(db.Integer(),primary_key=True)
@@ -45,12 +48,8 @@ class Visitas(db.Model):
 
 db.create_all()
 
-#teste functions
 
-# visita01 = Visitas(data="28/05/2020",estado_inicial="teste",estado_final="teste",proxima_visita="28/05/2020",paciente_id=45)
-# db.session.add(visita01)
-# db.session.commit()
-# db.session.close()
+#help functions
 
 def manipula_data(data):
     periodo = date(data) + timedelta(days=30)
@@ -59,7 +58,7 @@ def manipula_data(data):
 
 
 
-#rotas
+#routes
 
 @app.route('/')
 def index():
@@ -144,6 +143,7 @@ def visita_paciente_registrar(id):
     db.session.commit()
     db.session.close()
     return visita_paciente(id)
+
 
 
 if __name__:"__main__"
