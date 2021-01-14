@@ -1,0 +1,59 @@
+{% extends "main.html" %}
+{% block title %}Cadastro Clientes{% endblock %}
+
+
+
+{% block head %}
+    <link  type= "text/css" rel="stylesheet" href="../static/css/style.css">
+ 
+
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="titulo center">Cadastrar Paciente</h1>
+
+    <div class="container">
+        <form id="pacientes">
+        <div class=form-item>
+            <label class="item">Nome</label>
+            <input type="text" id="nome"></input>
+        </div>
+        <div class=form-item>
+            <label class="item">Data de Nascimento</label>
+            <input type="date" id="nascimento"></input>
+        </div>
+        <div class=form-item>
+            <label class="item">Idade</label>
+            <input type="text" id="idade"></input>
+        </div>
+        <div class=form-item>
+            <label class="item">Telefone</label>
+            <input type="text" id="telefone"></input>
+        </div>
+        <div class=form-item>
+            <label class="item">E-mail</label>
+            <input type="text" id="mail"></input>
+        </div>
+        <div class=form-item>
+            <label class="item">Endereço</label>
+            <input type="text" id="endereco"></input>
+        </div>
+        <div class=form-item>
+            <label class="item">Bairro</label>
+            <input type="text" id="bairro"></input>
+        </div>
+        <button class="submeter">Próximo</button>
+        </form>
+
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}        
+<script src="../static/js/script.js"></script>
+<script src="../static/js/form.js"></script>
+{% endblock %} 
+
+

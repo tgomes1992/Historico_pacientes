@@ -1,27 +1,22 @@
-<!DOCTYPE html>
-<html>
-    <head>
+{% extends "main.html" %}
+{% block title %}Gerenciamento de Clientes{% endblock %}
+
+
+
+{% block head %}
+    
         <link  type= "text/css" rel="stylesheet" href="../static/css/style.css">
         <link  type= "text/css" rel="stylesheet" href="../static/css/client_list/client.css">
-        <link  type= "text/css" rel="stylesheet" href="../static/css/materialize.css">
-        <link  href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    </head>
-    <body>
-        <h1 class="titulo center">Gerenciamento de Clientes</h1>
-
-        <nav>
-            <div class="nav-wrapper">
-              <a href="#" class="brand-logo">Menu</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="main" class="addClientes">Cadastrar Clientes</a></li>
-                <li><a href="/client_list">Gerenciamento de Clientes</a></li>
-              </ul>
-            </div>
-        </nav>
 
 
+{% endblock %}
 
-    <form id="pacientes" data-id="">
+{% block content %}
+
+    <section class="center">
+
+        <h1 class="titulo">Gerenciamento de Clientes</h1>
+        <form id="pacientes" data-id="">
         <div class=form-item>
             <label class="item">Nome</label>
             <input type="text" id="nome" value=""></input>
@@ -46,27 +41,39 @@
             <label class="item">Bairro</label>
             <input type="text" id="bairro"></input>
         </div>
-    </form>
+        </form>
 
-     <button class="concluir-modificacao">Concluir Modificação</button>
+    </section>
 
-     <div class="container">
-        <h2 class="sub-titulo">Clientes Cadastrados</h2>
-        <ul class="clientes">
-        {% for cliente in clientes %}
-        <li class='cliente' data-id={{cliente.id}}>{{cliente.nome}}
-            <div class="botoes">
-            <button class="remover">Remover</button>
-            <button class="modificar">Modificar</button>
-            <button class="visita">Visita</button>
-            </div>
-        </li>
-        {% endfor %}
-        </ul>
+    <button class="concluir-modificacao">Concluir Modificação</button>
+
+    <div class="container">
+    <h2 class="sub-titulo">Clientes Cadastrados</h2>
+    <ul class="clientes">
+    {% for cliente in clientes %}
+    <li class='cliente' data-id={{cliente.id}}>{{cliente.nome}}
+        <div class="botoes">
+        <button class="remover">Remover</button>
+        <button class="modificar">Modificar</button>
+        <button class="visita">Visita</button>
+        </div>
+    </li>
+    {% endfor %}
+    </ul>
     </div>
 
-    </body>
+
+{% endblock %}
+
+{% block scripts %} 
+
     <script src="../static/js/client_list/client.js"></script>
     <script src="../static/js/jquery-3.5.1.js"></script>
+
+{% endblock %}
+
+
+
+
 </html>
 

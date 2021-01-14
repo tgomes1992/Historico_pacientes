@@ -71,7 +71,7 @@ def client_list():
 
 @app.route('/main')
 def index2():
-    return render_template("main.html")
+    return render_template("cadastro.html")
 
 @app.route('/verificar/paciente/<cliente_id>',methods=['GET'])
 def checar_paciente(cliente_id):

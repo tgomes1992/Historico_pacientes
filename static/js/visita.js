@@ -9,6 +9,9 @@ let listaVisitas = document.querySelector('#lista_visitas');
 let visitas = document.querySelectorAll(".data-visita");
 
 
+alert("oi");
+
+
  for(i=0;i<visitas.length;i++){
      console.log(visitas[i].innerText)
      visitas[i].innerText = formatardata(visitas[i].innerText)

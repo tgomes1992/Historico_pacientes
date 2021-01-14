@@ -1,63 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <link  type= "text/css" rel="stylesheet" href="../static/css/style.css">
-    <link  type= "text/css" rel="stylesheet" href="../static/css/materialize.css">
+    <link  type= "text/css" rel="stylesheet" href="/static/css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    {% block head %}
+        <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
     </head>
-    <body>
-        <h1 class="titulo center">Cadastro de dados - Anamnese</h1>
-    <div>
-        <nav>
-            <div class="nav-wrapper">
-              <a href="#" class="brand-logo">Menu</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="main" class="addClientes">Cadastrar Clientes</a></li>
-                <li><a href="client_list">Gerenciamento de Clientes</a></li>
-              </ul>
-            </div>
-          </nav>
-    </div>
-    <div class="container">
-           <form id="pacientes">
-            <div class=form-item>
-                <label class="item">Nome</label>
-                <input type="text" id="nome"></input>
-            </div>
-            <div class=form-item>
-                <label class="item">Data de Nascimento</label>
-                <input type="date" id="nascimento"></input>
-            </div>
-            <div class=form-item>
-                <label class="item">Idade</label>
-                <input type="text" id="idade"></input>
-            </div>
-            <div class=form-item>
-                <label class="item">Telefone</label>
-                <input type="text" id="telefone"></input>
-            </div>
-            <div class=form-item>
-                <label class="item">E-mail</label>
-                <input type="text" id="mail"></input>
-            </div>
-            <div class=form-item>
-                <label class="item">Endereço</label>
-                <input type="text" id="endereco"></input>
-            </div>
-            <div class=form-item>
-                <label class="item">Bairro</label>
-                <input type="text" id="bairro"></input>
-            </div>
-            <button class="submeter">Próximo</button>
-           </form>
 
-    </div>
-
-
-
+    <body> 
+            
+        <div>
+            <nav>
+                <div class="nav-wrapper">
+                <a href="#" class="brand-logo">Menu</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="../main" class="addClientes">Cadastrar Clientes</a></li>
+                    <li><a href="../client_list">Gerenciamento de Clientes</a></li>
+                </ul>
+                </div>
+            </nav>
+        </div>
+    
+        <div id="content">{% block content %}{% endblock %}</div>
 
     </body>
-    <script src="../static/js/script.js"></script>
-    <script src="../static/js/form.js"></script>
+
+    {% block scripts %} 
+
+    {% endblock %}
+
+
 </html>
 
