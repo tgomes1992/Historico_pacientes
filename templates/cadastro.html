@@ -1,4 +1,4 @@
-{% extends "main.html" %}
+{% extends "template.html" %}
 {% block title %}Cadastro Clientes{% endblock %}
 
 
@@ -43,17 +43,21 @@
             <label class="item">Bairro</label>
             <input type="text" id="bairro"></input>
         </div>
-        <button class="submeter">Próximo</button>
-        </form>
+
+        <button class="btn waves-effect waves-light submeter " type="submit" name="action">Cadastrar
+            <i class="material-icons right">add</i>
+          </button>
+
+       </form>
 
     </div>
 
 
 {% endblock %}
 
-{% block scripts %}        
-<script src="../static/js/script.js"></script>
-<script src="../static/js/form.js"></script>
+{% block javascript %}        
+<script src="/static/js/cadastro.js"></script>
+<script src="/static/js/form.js"></script>
 {% endblock %} 
 
 

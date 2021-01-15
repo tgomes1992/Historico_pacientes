@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <link  type= "text/css" rel="stylesheet" href="/static/css/materialize.css">
+    <link  type= "text/css" rel="stylesheet" href="../static/css/materialize.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/static/js/jquery-3.5.1.js"></script>
     {% block head %}
         <title>{% block title %}{% endblock %}</title>
     {% endblock %}
@@ -13,7 +14,7 @@
         <div>
             <nav>
                 <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Menu</a>
+                <a href="#" class="brand-logo">Gerenciamento de Clientes</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="../main" class="addClientes">Cadastrar Clientes</a></li>
                     <li><a href="../client_list">Gerenciamento de Clientes</a></li>
@@ -24,12 +25,18 @@
     
         <div id="content">{% block content %}{% endblock %}</div>
 
+
+
+
     </body>
 
-    {% block scripts %} 
+    <script src="/static/js/materialize.js"></script> 
+    <script src="/static/js/datepicker.js"></script> 
+
+    {% block javascript %}
+     
 
     {% endblock %}
-
 
 </html>
 

@@ -1,13 +1,10 @@
-    {% extends "main.html" %}
+    {% extends "template.html" %}
     {% block title %}Gerenciamento de Visitas{% endblock %}
     
         
     {% block head %}
         <link  type="text/css" rel="stylesheet" href="../static/css/visitas.css"/>
         <link  type="text/css" rel="stylesheet" href="../static/css/style.css"/>
-        <link  type="text/css" rel="stylesheet" href="../static/css/materialize.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     
     {% endblock %}
     
     {% block content %}
@@ -35,36 +32,48 @@
                 </ul>
             </div>
 
-        </section>
+        </section>  
 
-        <section class="cadastro">
-            <form id="cadastro-visitas">
-                <h2 class="sub-titulo center">Cadastrar Visitas</h2>
-                <div class="container">
-                    <div class="form-item">
-                        <label>Data</label>
-                        <input type="date" id="dataVisita" />
+        <section class="cadastro row center">
+            <form id="cadastro-visitas" class="col s12">
+                <h2 class="sub-titulo">Cadastrar Visitas</h2>
+
+                    <div class="row">
+                        <div class="form-item input-field col s12">
+                            <input type="text" id="dataVisita" class="datepicker" />
+                            <label for=inicial>Data</label>
+                        </div>
                     </div>
-                    <div class="form-item">
-                        <label>Estado Inicial</label>
-                        <input type="textarea" id="inicial"  />
+
+                    <div class="row">
+                        <div class="form-item input-field col s12">
+                            <textarea type="textarea"  class="materialize-textarea" id="inicial"></textarea>
+                            <label for=inicial>Estado Inicial</label>
+                        </div>
                     </div>
-                    <div class="form-item">
-                        <label>Estado Final</label>
-                        <input type="textarea" id="final"  />
-                </div>
-            </div>
+                    
+                    <div class="row">
+                        <div class=" form-item input-field col s12">
+                            <textarea type="textarea"  class="materialize-textarea" id="final"></textarea>
+                            <label for=final>Estado Final</label>
+                        </div>
+                    </div>
             </form>
-            <button class="cadastrar-visitas">Registrar Visitas</button>
+
+            <button class="btn waves-effect waves-light cadastrar-visitas " type="submit" name="action">Registrar Visita
+                <i class="material-icons right">send</i>
+              </button>
+
+<!-- 
+          <button class="cadastrar-visitas">Registrar Visitas</button> -->
         </section>
     
     {% endblock %}
     
-    {% block scripts %} 
-    
-        <script src="../static/js/form.js"></script>
-        <script src="../static/js/visita.js"></script>
-        <script src="../static/js/jquery-3.5.1.js"></script>
+    {% block javascript %} 
+
+        <script src="/static/js/visita.js"></script>
+
 
     {% endblock %}
     

@@ -1,4 +1,4 @@
-{% extends "main.html" %}
+{% extends "template.html" %}
 {% block title %}Gerenciamento de Clientes{% endblock %}
 
 
@@ -53,9 +53,20 @@
     {% for cliente in clientes %}
     <li class='cliente' data-id={{cliente.id}}>{{cliente.nome}}
         <div class="botoes">
-        <button class="remover">Remover</button>
-        <button class="modificar">Modificar</button>
-        <button class="visita">Visita</button>
+
+        <button class="btn waves-effect waves-light remover  " type="submit" name="action">
+            <i class=" small material-icons right">delete</i>
+          </button>
+
+          <button class="btn waves-effect waves-light modificar" type="submit" name="action">
+            <i class=" small material-icons right">update</i>
+          </button>
+
+          <button class="btn waves-effect waves-light visita" type="submit" name="action">Visitas
+            <i class=" small material-icons right">navigate_next</i>
+          </button>
+
+
         </div>
     </li>
     {% endfor %}
@@ -65,10 +76,9 @@
 
 {% endblock %}
 
-{% block scripts %} 
+{% block javascript %} 
 
     <script src="../static/js/client_list/client.js"></script>
-    <script src="../static/js/jquery-3.5.1.js"></script>
 
 {% endblock %}
 

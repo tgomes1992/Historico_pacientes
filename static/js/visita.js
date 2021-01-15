@@ -9,8 +9,6 @@ let listaVisitas = document.querySelector('#lista_visitas');
 let visitas = document.querySelectorAll(".data-visita");
 
 
-alert("oi");
-
 
  for(i=0;i<visitas.length;i++){
      console.log(visitas[i].innerText)
@@ -25,7 +23,7 @@ function cadastrar_visita(){
         'final' : final.value,
     }
     let li = document.createElement("LI")
-    li.textContent = formatardata(dados_visita['data'])
+    li.textContent = dvisita.value
     listaVisitas.appendChild(li)
     console.log(dados_visita)
     cadastrovisitas.reset()
@@ -34,14 +32,11 @@ function cadastrar_visita(){
 
 
 function formatardata(data){
-    var date = new Date(data);
-    var dia  = date.getDate()+1;
-    var mes = "0"+(date.getMonth()+1);
-    if (mes>=10){
-        var mes = date.getMonth()+1;
-    }
-    var ano = date.getFullYear();
-    master = dia+"/"+mes+"/"+ano
+
+    let ano = data.substring(0,4);
+    let mes = data.substring(5,7);
+    let dia = data.substring(8,10);
+    master = dia + "/" + mes + "/" + ano
 return master
 }
 
