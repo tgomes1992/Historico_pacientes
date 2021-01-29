@@ -2,7 +2,7 @@ from flask import Flask , render_template,request,redirect,url_for,jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import sys
-from datetime import date , timedelta
+from datetime import datetime
 import sqlite3
 
 
@@ -12,7 +12,7 @@ import sqlite3
 #app configuration
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:tAman1993**@localhost:5432/podologia'
+app.config['SQLALCHEMY_DATABASE_URI'] = r'sqlite:///D:\Projects\clientes\Historico_pacientes\foo.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -59,6 +59,16 @@ def manipula_data(data):
     periodo = date(data) + timedelta(days=30)
     periodo_traduzido = periodo.strftime('%d/%m/%Y')
     return periodo_traduzido
+
+def date_sql(data):
+    str = data
+    ndate = datetime.strptime(data,'%Y-%m-%d').date()
+    return ndate
+
+def date_sql2(data):
+    str = data
+    ndate = datetime.strptime(data,'%d/%m/%Y').date()
+    return ndate
 
 
 
@@ -131,17 +141,40 @@ def checar_paciente(cliente_id):
 
 @app.route('/cadastrar/paciente',methods=['POST'])
 def cadastrar_pacientes():
-    try:
-        npaciente = request.get_json()
-        print(npaciente)
-        paciente = Cliente(nome=npaciente['nome'],data_nascimento=npaciente['nascimento'],email=npaciente['email'],telefone=npaciente['telefone'],endereco=npaciente['endereco'],bairro=npaciente['bairro'])
-        print(paciente)
-        db.session.add(paciente)
-        db.session.commit()
-    except:
-        db.session.rollback()
-    finally:
-        db.session.close()
+
+    npaciente = request.get_json()
+    print(npaciente['nascimento'])
+    ndate = date_sql(npaciente['nascimento'])
+
+
+
+    paciente = Cliente(nome=npaciente['nome'],
+                data_nascimento=ndate,
+                email=npaciente['email'],
+                telefone=npaciente['telefone'],
+                endereco=npaciente['endereco'],
+                bairro=npaciente['bairro'])
+    #print(paciente)
+    db.session.add(paciente)
+    db.session.commit()
+    print(paciente)
+
+
+
+
+
+    # try:
+    #     npaciente = request.get_json()
+    #     print(npaciente)
+    #     paciente = Cliente(nome=npaciente['nome'],data_nascimento=npaciente['nascimento'],email=npaciente['email'],telefone=npaciente['telefone'],endereco=npaciente['endereco'],bairro=npaciente['bairro'])
+    #     #print(paciente)
+    #     db.session.add(paciente)
+    #     db.session.commit()
+    #     print(paciente)
+    # except:
+    #     db.session.rollback()
+    # finally:
+    #     db.session.close()  
     return redirect(url_for('client_list'))
 
 @app.route('/excluir/paciente',methods=['POST'])
@@ -161,7 +194,7 @@ def excluir_paciente():
 def modificar_paciente():
     id =  request.values['id']
     cliente = Cliente.query.get(id)
-    cliente.data_nascimento = request.values['data_nascimento']
+    cliente.data_nascimento = date_sql(request.values['data_nascimento'])
     cliente.email = request.values['email']
     cliente.telefone = request.values['telefone']
     cliente.endereco = request.values['endereco']
@@ -179,8 +212,8 @@ def visita_paciente(id):
 def visita_paciente_registrar(id):
     resposta = request.values
     recebido = Cliente.query.get(id)
-    #pdata = manipula_data(resposta['data'])
-    nvisita =Visitas(data=resposta['data'],estado_inicial=resposta['inicial'],estado_final=resposta['final'],proxima_visita=resposta['data'],paciente_id=id)
+    pdata = date_sql2(resposta['data'])
+    nvisita =Visitas(data=pdata,estado_inicial=resposta['inicial'],estado_final=resposta['final'],proxima_visita=pdata,paciente_id=id)
     db.session.add(nvisita)
     db.session.commit()
     db.session.close()

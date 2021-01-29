@@ -1,0 +1,71 @@
+{% extends "template.html" %}
+{% block title %}Gerenciamento de Clientes{% endblock %}
+
+
+
+{% block head %}
+    
+        <link  type= "text/css" rel="stylesheet" href="../static/css/style.css">
+        <link  type= "text/css" rel="stylesheet" href="../static/css/client_list/client.css">
+
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="buscar row center">
+        <form id="buscar" class="col 6" method='post' action="/client_list/search">
+            <h2 class="sub-titulo">Buscar Clientes</h2>
+
+                <div class="row">
+                    <div class="form-item input-field col s12">
+                        <input type="search" id="finder"  name="value"/>
+                        <label for=inicial>Buscar Cliente</label>
+                    </div>
+
+        </form>
+
+        <!-- <form class="search" method="post" action="/venues/search">
+            <input class="form-control"
+              type="search"
+              name="search_term"
+              placeholder="Find a venue"
+              aria-label="Search">
+          </form> -->
+
+    </section>
+
+    <div class="container">
+    <h2 class="sub-titulo">Clientes Cadastrados</h2>
+
+
+    <ul class="clientes">
+    {% for cliente in clientes %}
+        <li class='cliente' data-id={{cliente.id}}>{{cliente.nome}}
+            <div class="botoes">
+
+                <button class="btn waves-effect waves-light remover  " type="submit" name="action">
+                    <i class=" small material-icons right">delete</i>
+                </button>
+                <button class="btn waves-effect waves-light modificar" type="submit" name="action">
+                    <i class=" small material-icons right">update</i>
+                </button>
+                <button class="btn waves-effect waves-light visita" type="submit" name="action">Visitas
+                    <i class=" small material-icons right">navigate_next</i>
+                </button>
+
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+    </div>
+
+
+{% endblock %}
+
+{% block javascript %} 
+
+    <script src="../static/js/client_list/search.js"></script>
+
+{% endblock %}
+

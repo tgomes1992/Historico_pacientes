@@ -16,59 +16,71 @@
     <section class="center">
 
         <h1 class="titulo">Gerenciamento de Clientes</h1>
-        <form id="pacientes" data-id="">
-        <div class=form-item>
-            <label class="item">Nome</label>
-            <input type="text" id="nome" value=""></input>
-        </div>
-        <div class=form-item>
-            <label class="item">Data de Nascimento</label>
-            <input type="date" id="nascimento" value=""></input>
-        </div>
-        <div class=form-item>
-            <label class="item">Telefone</label>
-            <input type="text" id="telefone"></input>
-        </div>
-        <div class=form-item>
-            <label class="item">E-mail</label>
-            <input type="text" id="mail"></input>
-        </div>
-        <div class=form-item>
-            <label class="item">Endereço</label>
-            <input type="text" id="endereco"></input>
-        </div>
-        <div class=form-item>
-            <label class="item">Bairro</label>
-            <input type="text" id="bairro"></input>
-        </div>
+            <form id="pacientes" data-id="">
+                <div class=form-item>
+                    <label class="item">Nome</label>
+                    <input type="text" id="nome" value=""></input>
+                </div>
+                <div class=form-item>
+                    <label class="item">Data de Nascimento</label>
+                    <input type="date" id="nascimento" value=""></input>
+                </div>
+                <div class=form-item>
+                    <label class="item">Telefone</label>
+                    <input type="text" id="telefone"></input>
+                </div>
+                <div class=form-item>
+                    <label class="item">E-mail</label>
+                    <input type="text" id="mail"></input>
+                </div>
+                <div class=form-item>
+                    <label class="item">Endereço</label>
+                    <input type="text" id="endereco"></input>
+                </div>
+                <div class=form-item>
+                    <label class="item">Bairro</label>
+                    <input type="text" id="bairro"></input>
+                </div>
         </form>
 
     </section>
 
     <button class="concluir-modificacao">Concluir Modificação</button>
 
+    <section class="buscar row center">
+        <section class="buscar row center">
+            <form id="buscar" class="col 6" method='post' action="/client_list">
+                <h2 class="sub-titulo">Buscar Clientes</h2>
+                    <div class="row">
+                        <div class="form-item input-field col s12">
+                            <input type="search" id="finder"  name="value"/>
+                            <label for=inicial>Buscar Cliente</label>
+                    </div>
+            </form>
+
+    </section>
+
     <div class="container">
     <h2 class="sub-titulo">Clientes Cadastrados</h2>
+
+
     <ul class="clientes">
     {% for cliente in clientes %}
-    <li class='cliente' data-id={{cliente.id}}>{{cliente.nome}}
-        <div class="botoes">
+        <li class='cliente' data-id={{cliente.id}}>{{cliente.nome}}
+            <div class="botoes">
 
-        <button class="btn waves-effect waves-light remover  " type="submit" name="action">
-            <i class=" small material-icons right">delete</i>
-          </button>
+                <button class="btn waves-effect waves-light remover  " type="submit" name="action">
+                    <i class=" small material-icons right">delete</i>
+                </button>
+                <button class="btn waves-effect waves-light modificar" type="submit" name="action">
+                    <i class=" small material-icons right">update</i>
+                </button>
+                <button class="btn waves-effect waves-light visita" type="submit" name="action">Visitas
+                    <i class=" small material-icons right">navigate_next</i>
+                </button>
 
-          <button class="btn waves-effect waves-light modificar" type="submit" name="action">
-            <i class=" small material-icons right">update</i>
-          </button>
-
-          <button class="btn waves-effect waves-light visita" type="submit" name="action">Visitas
-            <i class=" small material-icons right">navigate_next</i>
-          </button>
-
-
-        </div>
-    </li>
+            </div>
+        </li>
     {% endfor %}
     </ul>
     </div>
@@ -81,9 +93,4 @@
     <script src="../static/js/client_list/client.js"></script>
 
 {% endblock %}
-
-
-
-
-</html>
 

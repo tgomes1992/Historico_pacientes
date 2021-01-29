@@ -5,11 +5,36 @@ let concluir = document.querySelector('.concluir-modificacao');
 const objeto = formobject();
 let visita =  document.querySelectorAll('.visita');
 
-console.log(modificar)
+let buscar_button = document.querySelector(".bbuscar")
+
+
 
 window.onload=()=>{
     adicionar_eventos();
 };
+
+
+buscar_button.addEventListener('click',()=>{
+    // this.preventDefault()
+    
+
+    let buscar = document.querySelector("#finder")
+    let value = {
+        'value':buscar.value
+    }
+    console.log(value)
+
+    
+    $.post('/client_list/search',value,()=>{
+      
+        
+
+    })
+
+})
+
+
+
 
 function formobject(){
     let paciente = {

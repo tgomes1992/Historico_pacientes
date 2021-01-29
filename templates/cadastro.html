@@ -13,36 +13,59 @@
 
     <h1 class="titulo center">Cadastrar Paciente</h1>
 
-    <div class="container">
-        <form id="pacientes">
-        <div class=form-item>
-            <label class="item">Nome</label>
-            <input type="text" id="nome"></input>
+    <div class="row">
+        <form id="pacientes" class="col s12">
+
+
+
+        <div class="row">
+            <div class="form-item col s12">
+                <label class="item center">Nome</label>
+                <input type="text" id="nome"></input>
+            </div>
+            
         </div>
-        <div class=form-item>
-            <label class="item">Data de Nascimento</label>
-            <input type="date" id="nascimento"></input>
+
+        <div class="row">            
+            <div class="form-item col s12">
+                <label class="item center">Data de Nascimento</label>
+                <input type="date" id="nasicmento"></input>
+            </div>
         </div>
-        <div class=form-item>
-            <label class="item">Idade</label>
-            <input type="text" id="idade"></input>
+
+        <div class="row">               
+            <div class="form-item col s12">
+                <label class="item center">Telefone</label>
+                <input type="text" id="telefone"></input>
+            </div>
         </div>
-        <div class=form-item>
-            <label class="item">Telefone</label>
-            <input type="text" id="telefone"></input>
+
+
+        <div class="row">
+            <div class="form-item col s12">
+                <label class="item center">E-mail</label>
+                <input type="text" id="mail"></input>
+            </div>
         </div>
-        <div class=form-item>
-            <label class="item">E-mail</label>
-            <input type="text" id="mail"></input>
+
+        <div class="row">          
+
+            <div class="form-item col s12">
+                <label class="item center">Endereço</label>
+                <input type="text" id="endereco"></input>
+            </div>
+
         </div>
-        <div class=form-item>
-            <label class="item">Endereço</label>
-            <input type="text" id="endereco"></input>
+
+        <div class="row">            
+            <div class="form-item col s12">
+                <label class="item center">Bairro</label>
+                <input type="text" id="bairro"></input>
+            </div>
         </div>
-        <div class=form-item>
-            <label class="item">Bairro</label>
-            <input type="text" id="bairro"></input>
-        </div>
+
+
+        <div class="row"></div>
 
         <button class="btn waves-effect waves-light submeter " type="submit" name="action">Cadastrar
             <i class="material-icons right">add</i>
@@ -57,7 +80,6 @@
 
 {% block javascript %}        
 <script src="/static/js/cadastro.js"></script>
-<script src="/static/js/form.js"></script>
 {% endblock %} 
 
 

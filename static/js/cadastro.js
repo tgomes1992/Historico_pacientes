@@ -2,15 +2,19 @@ var submeter = document.querySelector(".submeter");
 var saudeform = document.querySelector("#saude");
 let pacientes = document.querySelectorAll('#pacientes');
 
+
+
+
+
 submeter.addEventListener("click",function(){
     event.preventDefault();
     let paciente = {
         'nome':pacientes[0][0].value,
         'data_nascimento':pacientes[0][1].value,
-        'telefone':pacientes[0][3].value,
-        'email':pacientes[0][4].value,
-        'endereco':pacientes[0][5].value,
-        'bairro':pacientes[0][6].value
+        'telefone':pacientes[0][2].value,
+        'email':pacientes[0][3].value,
+        'endereco':pacientes[0][4].value,
+        'bairro':pacientes[0][5].value
     };
     console.log(paciente);
     fetch("/cadastrar/paciente",{
