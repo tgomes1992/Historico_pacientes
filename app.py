@@ -60,6 +60,17 @@ def manipula_data(data):
     periodo_traduzido = periodo.strftime('%d/%m/%Y')
     return periodo_traduzido
 
+def date_sql(data):
+    str = data
+    ndate = datetime.strptime(data,'%Y-%m-%d').date()
+    return ndate
+
+def date_sql2(data):
+    str = data
+    ndate = datetime.strptime(data,'%d/%m/%Y').date()
+    return ndate
+
+
 
 
 #routes
@@ -71,21 +82,20 @@ def index():
 @app.route('/client_list',methods=['POST','GET'])
 def client_list():
 
-    response = request.form.get('value')
-
     client = Cliente.query.all()
     nclient = []
+    response = request.form.get('value')
 
-    if response != None:
+    if response == None:
+        nclient = Cliente.query.all()
+    else:
         for i in client:
             ndict = {}
             if  response.casefold() in i.nome.casefold():
-                print(i.nome)
+                #print(i.nome)
                 ndict['id'] = i.id
                 ndict['nome'] = i.nome
-                nclient.append(ndict)
-        
-        client = nclient
+                nclient.append(ndict)     
     return render_template("client_list.html",clientes=nclient)
 
 @app.route('/client_list/search',methods=['POST','GET'])
@@ -114,9 +124,10 @@ def find_client():
 def index2():
     return render_template("cadastro.html")
 
-@app.route('/verificar/paciente/<cliente_id>',methods=['GET'])
-def checar_paciente(cliente_id):
-    modificado = Cliente.query.get(cliente_id)
+@app.route('/verificar/paciente/',methods=['GET'])
+def checar_paciente():
+    id = request.values['id']
+    modificado = Cliente.query.get(id)
     resposta = {
         'id':modificado.id, 
         'nome_completo':modificado.nome,
