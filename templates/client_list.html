@@ -16,7 +16,7 @@
     <section class="center">
 
         <h1 class="titulo">Gerenciamento de Clientes</h1>
-            <form id="pacientes" data-id="">
+            <form id="pacientes" data-id=""  method='post' action="/modificar/pacientes">
                 <div class=form-item>
                     <label class="item">Nome</label>
                     <input type="text" id="nome" value=""></input>
@@ -69,14 +69,14 @@
         <li class='cliente' data-id={{cliente.id}}>{{cliente.nome}}
             <div class="botoes">
 
-                <button class="btn waves-effect waves-light remover  " type="submit" name="action">
-                    <i class=" small material-icons right">delete</i>
+                <button class="btn waves-effect waves-light remover  "   data-id={{cliente.id}} type="submit" name="action">
+                    <i class=" small material-icons right"  data-id={{cliente.id}}>delete</i>
                 </button>
-                <button class="btn waves-effect waves-light modificar" type="submit" name="action">
-                    <i class=" small material-icons right">update</i>
+                <button class="btn waves-effect waves-light modificar" type="submit"  data-id={{cliente.id}} name="action">
+                    <i class=" small material-icons right"  data-id={{cliente.id}}>update</i>
                 </button>
-                <button class="btn waves-effect waves-light visita" type="submit" name="action">Visitas
-                    <i class=" small material-icons right">navigate_next</i>
+                <button class="btn waves-effect waves-light visita" type="submit"  data-id={{cliente.id}} name="action">Visitas
+                    <i class=" small material-icons right"  data-id={{cliente.id}}>navigate_next</i>
                 </button>
 
             </div>

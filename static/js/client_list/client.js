@@ -7,31 +7,13 @@ let visita =  document.querySelectorAll('.visita');
 
 let buscar_button = document.querySelector(".bbuscar")
 
+console.log(form)
 
 
 window.onload=()=>{
     adicionar_eventos();
 };
 
-
-buscar_button.addEventListener('click',()=>{
-    // this.preventDefault()
-    
-
-    let buscar = document.querySelector("#finder")
-    let value = {
-        'value':buscar.value
-    }
-    console.log(value)
-
-    
-    $.post('/client_list/search',value,()=>{
-      
-        
-
-    })
-
-})
 
 
 
@@ -64,14 +46,19 @@ function adicionar_eventos(){
           });
     }
     for(i=0 ;i < modificar.length; i++ ){
-        botaom = modificar[i];
+        botaom = modificar[i];  
         botaom.addEventListener("click",(e)=>{
-            var id = e.target.parentNode.parentNode.dataset.id;
-            console.log(id[0])            
-            $.get('/verificar/paciente/' + id,function(data){
-                var dado = formatardata(data.nascimento);
-                form.setAttribute('data-id',id);
-                console.log(dado);
+            let id = e.target;
+            let attr = {
+                'id': id.getAttribute("data-id"),
+            }
+            console.log(id)   
+            console.log(attr)     
+            $.get('/verificar/paciente/', attr ,function(data){
+                // console.log(data)
+                let dado = formatardata(data.nascimento);
+                form.setAttribute('data-id',attr['id']);
+                // console.log(dado);
                 form[0].value = data.nome_completo;
                 form[1].value = dado;
                 form[2].value = data.telefone;
@@ -83,14 +70,15 @@ function adicionar_eventos(){
     }
     concluir.addEventListener('click',()=>{
         dados ={
-            'id':form.dataset.id,
+            'id':form.getAttribute("data-id"),
             'nome':form[0].value,
             'data_nascimento':form[1].value,
             'telefone':form[2].value,
             'email':form[3].value,
             'endereco':form[4].value,
             'bairro':form[5].value,
-        } 
+        }
+        console.log(dados)
         $.post("/modificar/pacientes",dados,()=>{
             console.log('feito')
             form.reset();

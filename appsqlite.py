@@ -81,21 +81,21 @@ def index():
 @app.route('/client_list',methods=['POST','GET'])
 def client_list():
 
-    response = request.form.get('value')
-
+    
     client = Cliente.query.all()
     nclient = []
+    response = request.form.get('value')
 
-    if response != None:
+    if response == None:
+        nclient = Cliente.query.all()
+    else:
         for i in client:
             ndict = {}
             if  response.casefold() in i.nome.casefold():
-                print(i.nome)
+                #print(i.nome)
                 ndict['id'] = i.id
                 ndict['nome'] = i.nome
-                nclient.append(ndict)
-        
-        client = nclient
+                nclient.append(ndict)        
     return render_template("client_list.html",clientes=nclient)
 
 @app.route('/client_list/search',methods=['POST','GET'])
@@ -124,19 +124,21 @@ def find_client():
 def index2():
     return render_template("cadastro.html")
 
-@app.route('/verificar/paciente/<cliente_id>',methods=['GET'])
-def checar_paciente(cliente_id):
-    modificado = Cliente.query.get(cliente_id)
+@app.route('/verificar/paciente/',methods=['GET'])
+def checar_paciente():
+    response = request.values['id']
+    print(response)
+    modificado = Cliente.query.get(response)
     resposta = {
-        'id':modificado.id, 
+        'id':modificado.id,         
         'nome_completo':modificado.nome,
-        'nascimento':modificado.data_nascimento,
+        'nascimento':modificado.data_nascimento,  
         'email': modificado.email,
         'telefone'  : modificado.telefone,
         'endereco':modificado.endereco,
         'bairro':modificado.bairro,
     }
-    print(resposta)
+    print(modificado)
     return resposta
 
 @app.route('/cadastrar/paciente',methods=['POST'])
@@ -192,7 +194,8 @@ def excluir_paciente():
 
 @app.route('/modificar/pacientes',methods=['POST'])
 def modificar_paciente():
-    id =  request.values['id']
+    id = request.values['id']
+    print(id)
     cliente = Cliente.query.get(id)
     cliente.data_nascimento = date_sql(request.values['data_nascimento'])
     cliente.email = request.values['email']
@@ -202,7 +205,7 @@ def modificar_paciente():
     cliente.nome = request.values['nome']
     db.session.commit()
     db.session.close()
-    return redirect(url_for('index2'))
+    return redirect(url_for('client_list'))
 
 @app.route('/visita/<id>')
 def visita_paciente(id):
