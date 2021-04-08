@@ -14,3 +14,12 @@ O Objetivo do sistema é acompanhar as visitar de um cliente/paciente a um deter
  
 ## Para Utilizar
 
+(Aguardando atualizações na documentação)
+
+## Próximas Atualizações
+
+
+ - Paginação na tela de buscar clientes;
+ - Validações de formulários;
+ - Ajustes no layout mobile;
+ - Relatórios Diversos;
