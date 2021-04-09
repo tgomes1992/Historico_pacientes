@@ -18,7 +18,6 @@ O Objetivo do sistema é acompanhar as visitar de um cliente/paciente a um deter
 
 ## Próximas Atualizações
 
-
  - Paginação na tela de buscar clientes;
  - Validações de formulários;
  - Ajustes no layout mobile;
