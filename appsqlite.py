@@ -147,9 +147,6 @@ def cadastrar_pacientes():
     npaciente = request.get_json()
     print(npaciente['nascimento'])
     ndate = date_sql(npaciente['nascimento'])
-
-
-
     paciente = Cliente(nome=npaciente['nome'],
                 data_nascimento=ndate,
                 email=npaciente['email'],
