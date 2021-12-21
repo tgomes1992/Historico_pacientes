@@ -1,79 +1,68 @@
-    {% extends "template.html" %}
-    {% block title %}Gerenciamento de Visitas{% endblock %}
-    
-        
-    {% block head %}
-        <link  type="text/css" rel="stylesheet" href="../static/css/visitas.css"/>
-        <link  type="text/css" rel="stylesheet" href="../static/css/style.css"/>
-    {% endblock %}
-    
-    {% block content %}
+ {% extends "template.html" %} {% block title %}Gerenciamento de Visitas{% endblock %} {% block head %}
+<link type="text/css" rel="stylesheet" href="../static/css/visitas.css" />
+<link type="text/css" rel="stylesheet" href="../static/css/style.css" /> {% endblock %} {% block content %}
 
-        <h1 class="titulo center">Gerenciamento de Visitas</h1>
+<h1 class="titulo center">Gerenciamento de Visitas</h1>
 
-        <section class="apresentacao center">
+<section class="apresentacao center">
 
-            <div class="container">
-                <h2 class="sub-titulo">Cliente</h2>
-                <h3 class="descricao-cliente" data-id={{nome.id}}>{{nome.nome}}</h3>
-                </div>
+    <div class="container">
+        <h2 class="sub-titulo">Cliente</h2>
+        <h3 class="descricao-cliente" data-id={{nome.id}}>{{nome.nome}}</h3>
+    </div>
 
-            <div class="container">
-                <h2 class="sub-titulo">Visitas</h2>
+    <div class="container">
+        <h2 class="sub-titulo">Visitas</h2>
 
-                <ul id="lista_visitas">
-                    {% for visitas in visitas_check %}
-                    <li class=data-visita>
-                    {{visitas.data}}
-                    </li>
-                    {% endfor %}
-                </ul>
+        <ul id="lista_visitas">
+            {% for visitas in visitas_check %}
+            <li class='data-visita'>
+                {{visitas.data}}
+            </li>
+            <a href={{url_for( 'detalhe_visita',id=visitas.id)}}>detalhes</a> {% endfor %} </ul>
 
-                </ul>
+        </ul>
+    </div>
+
+</section>
+
+<section class="cadastro row center">
+    <form id="cadastro-visitas" class="col s12">
+        <h2 class="sub-titulo">Cadastrar Visitas</h2>
+
+        <div class="row">
+            <div class="form-item input-field col s12">
+                <input type="text" id="dataVisita" class="datepicker" />
+                <label for=inicial>Data</label>
             </div>
+        </div>
 
-        </section>  
+        <div class="row">
+            <div class="form-item input-field col s12">
+                <textarea type="textarea" class="materialize-textarea" id="inicial"></textarea>
+                <label for=inicial>Estado Inicial</label>
+            </div>
+        </div>
 
-        <section class="cadastro row center">
-            <form id="cadastro-visitas" class="col s12">
-                <h2 class="sub-titulo">Cadastrar Visitas</h2>
+        <div class="row">
+            <div class=" form-item input-field col s12">
+                <textarea type="textarea" class="materialize-textarea" id="final"></textarea>
+                <label for=final>Estado Final</label>
+            </div>
+        </div>
+    </form>
 
-                    <div class="row">
-                        <div class="form-item input-field col s12">
-                            <input type="text" id="dataVisita" class="datepicker" />
-                            <label for=inicial>Data</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-item input-field col s12">
-                            <textarea type="textarea"  class="materialize-textarea" id="inicial"></textarea>
-                            <label for=inicial>Estado Inicial</label>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class=" form-item input-field col s12">
-                            <textarea type="textarea"  class="materialize-textarea" id="final"></textarea>
-                            <label for=final>Estado Final</label>
-                        </div>
-                    </div>
-            </form>
-
-            <button class="btn waves-effect waves-light cadastrar-visitas " type="submit" name="action">Registrar Visita
+    <button class="btn waves-effect waves-light cadastrar-visitas " type="submit" name="action">Registrar Visita
                 <i class="material-icons right">send</i>
               </button>
 
-<!-- 
+    <!-- 
           <button class="cadastrar-visitas">Registrar Visitas</button> -->
-        </section>
-    
-    {% endblock %}
-    
-    {% block javascript %} 
+</section>
 
-        <script src="/static/js/visita.js"></script>
+{% endblock %} {% block javascript %}
+
+<script src="/static/js/visita.js"></script>
 
 
-    {% endblock %}
-    
+{% endblock %}

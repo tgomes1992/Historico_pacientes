@@ -1,9 +1,8 @@
 from flask import Flask , render_template,request,redirect,url_for,jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-import sys
 from datetime import datetime
-import sqlite3
+
 
 
 
@@ -50,7 +49,7 @@ class Visitas(db.Model):
     paciente_id = db.Column(db.Integer(), db.ForeignKey('cliente.id'),nullable=False)
 
 
-db.create_all()
+# db.create_all()
 
 
 #help functions

@@ -1,0 +1,10 @@
+ - Ajustar os Layouts; ok
+ - Ajustar templates; OK
+
+ - Preparar a documentação;
+ - Criar versão com o banco de dados SQLITE;
+ - Refatorar:
+     - Javascript; 
+     - CSS;
+
+ 

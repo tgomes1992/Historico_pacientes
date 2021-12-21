@@ -1,9 +1,9 @@
 from flask import Flask , render_template,request,redirect,url_for,jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-import sys
-from datetime import date , timedelta
-import sqlite3
+from datetime import date , timedelta , datetime
+
+
 
 
 
@@ -12,6 +12,8 @@ import sqlite3
 #app configuration
 
 app = Flask(__name__)
+
+#sqlalchemy configuration  , utilizado para configurar o seu banco de dados
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:tAman1993**@localhost:5432/podologia'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -20,7 +22,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 #class definitions objects definition
-
 class Cliente(db.Model):
     id = db.Column(db.Integer(),primary_key=True)
     nome =  db.Column(db.String(),nullable=False)
@@ -185,6 +186,12 @@ def modificar_paciente():
 @app.route('/visita/<id>')
 def visita_paciente(id):
     return render_template("visitas.html",visitas_check = Visitas.query.filter_by(paciente_id=id),nome = Cliente.query.get(id))
+
+
+@app.route("/detalhe_visita/<int:id>")
+def detalhe_visita(id):
+    visita = Visitas.query.get(id)
+    return render_template('detalhe_visitas.html',visita = visita)
 
 @app.route('/visita/paciente/<id>/registrar',methods=['POST'])
 def visita_paciente_registrar(id):

@@ -1,0 +1,14 @@
+ {% extends "template.html" %} {% block title %}Gerenciamento de Visitas{% endblock %} {% block head %}
+<link type="text/css" rel="stylesheet" href="../static/css/visitas.css" />
+<link type="text/css" rel="stylesheet" href="../static/css/style.css" /> {% endblock %} {% block content %}
+<h2>Visita</h2>
+<section>
+    <p>{{visita.data}}</p>
+    <p>{{visita.estado_inicial}}</p>
+    <p>{{visita.estado_final}}</p>
+</section>{% endblock %} {% block javascript %}
+<script src="/static/js/visita.js">
+</script>
+
+
+{% endblock %}
